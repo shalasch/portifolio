@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv \"C:/Users/Shala/portfolio-temp-backup/.claude\" \"C:/Users/Shala/portfolio/.claude\" && mv \"C:/Users/Shala/creator-dashboard-backup.jsx\" \"C:/Users/Shala/portfolio/creator-dashboard.jsx\" && rmdir \"C:/Users/Shala/portfolio-temp-backup\" && cd \"C:/Users/Shala/portfolio\" && npm install lucide-react recharts 2>&1)",
+      "Bash(cd \"C:/Users/Shala/portfolio\" && npm run build 2>&1)",
+      "Bash(npm install:*)",
+      "Bash(vercel --version 2>&1)",
+      "Bash(cd \"C:/Users/Shala/portfolio\" && vercel deploy --prod --yes 2>&1)",
+      "Bash(cd \"C:/Users/Shala/portfolio\" && vercel login 2>&1)"
+    ]
+  }
+}

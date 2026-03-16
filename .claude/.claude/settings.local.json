@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv \"C:/Users/Shala/portfolio/creator-dashboard.jsx\" \"C:/Users/Shala/creator-dashboard-backup.jsx\" && cd C:/Users/Shala/portfolio && npx create-react-app . 2>&1)",
+      "Bash(mkdir -p \"C:/Users/Shala/portfolio-temp-backup\" && mv \"C:/Users/Shala/portfolio/.claude\" \"C:/Users/Shala/portfolio-temp-backup/.claude\" && cd \"C:/Users/Shala/portfolio\" && npx create-react-app . 2>&1)"
+    ]
+  }
+}
