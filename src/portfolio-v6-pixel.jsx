@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowUpRight, MessageCircle, Github, Play, Workflow, Bot, LayoutDashboard, Code2, Database } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Github, Play, Workflow, Bot, Code2, Database } from "lucide-react";
 
 /* ── CURSOR ─────────────────────────────────────────────────────────────────── */
 function Cursor() {
@@ -23,7 +23,6 @@ function Cursor() {
   }, []);
   return (
     <>
-      <div ref={ring} style={{ position:"fixed",top:0,left:0,width:36,height:36,borderRadius:"50%",border:"1px solid rgba(255,255,255,0.25)",pointerEvents:"none",zIndex:9999,mixBlendMode:"difference" }} />
       <div ref={dot} style={{ position:"fixed",top:0,left:0,width:4,height:4,borderRadius:0,background:"#fff",pointerEvents:"none",zIndex:9999,mixBlendMode:"difference" }} />
     </>
   );
@@ -35,7 +34,7 @@ function Marquee({ items }) {
     <div style={{ overflow:"hidden",borderTop:"1px solid #111",borderBottom:"1px solid #111",padding:"10px 0",whiteSpace:"nowrap",userSelect:"none" }}>
       <div style={{ display:"inline-block",animation:"marquee 30s linear infinite" }}>
         {[...items,...items].map((item,i) => (
-          <span key={i} style={{ fontSize:8,fontFamily:"'JetBrains Mono',monospace",letterSpacing:3,color:"#222",marginRight:40 }}>{item}</span>
+          <span key={i} style={{ fontSize:8,fontFamily:"'JetBrains Mono',monospace",letterSpacing:3,color:"#777",marginRight:40 }}>{item}</span>
         ))}
       </div>
     </div>
@@ -67,7 +66,7 @@ function ScanLines() {
 
 /* ── DATA ───────────────────────────────────────────────────────────────────── */
 const PROJECTS = [
-  // AUTOMATIONS FIRST
+  // AUTOMATIONS
   { id:7, n:"01", cat:"AUTOMATION", hasDemo:false, complete:true, icon:<Workflow size={13}/>,
     PT:{ title:"PRODUCT IMPORT", sub:"CSV → Selenium → SQLite", desc:"Script Python que lê produtos de um CSV, preenche formulários web automaticamente via Selenium e armazena em SQLite. Zero input manual." },
     EN:{ title:"PRODUCT IMPORT", sub:"CSV → Selenium → SQLite", desc:"Python script that reads products from CSV, auto-fills web forms via Selenium and stores in SQLite. Zero manual input." },
@@ -81,35 +80,46 @@ const PROJECTS = [
     EN:{ title:"LEAD QUALIFICATION", sub:"Make.com · Gmail · CRM", desc:"Full pipeline: captures leads, scores them, sends segmented emails and notifies the sales team automatically." },
     tags:["Make.com","Gmail","CRM"] },
   // AI AGENTS
-  { id:4, n:"04", cat:"AI AGENT", hasDemo:false, complete:false, icon:<Bot size={13}/>,
-    PT:{ title:"PHANTOM", sub:"Short-form Script Generator", desc:"Agente IA para roteiros de vídeos curtos. Tema + nicho → hook, corpo e CTA prontos para gravar." },
-    EN:{ title:"PHANTOM", sub:"Short-form Script Generator", desc:"AI agent for short-form video scripts. Topic + niche → hook, body and CTA, ready to record." },
-    tags:["Claude API","Shorts","PT/EN"] },
-  { id:5, n:"05", cat:"AI AGENT", hasDemo:false, complete:false, icon:<Bot size={13}/>,
-    PT:{ title:"AD COPY AGENT", sub:"Meta · Google · Conversão", desc:"5 variações completas de copy com headline, corpo e CTA. Pronto para A/B test no mesmo output." },
-    EN:{ title:"AD COPY AGENT", sub:"Meta · Google · Conversion", desc:"5 complete copy variations with headline, body and CTA. Ready for A/B testing in a single output." },
-    tags:["Claude API","A/B Test","Ads"] },
-  { id:6, n:"06", cat:"AI AGENT", hasDemo:false, complete:false, icon:<Bot size={13}/>,
-    PT:{ title:"NEWSLETTER GW", sub:"No seu tom de voz", desc:"Ghostwriter IA treinado no seu estilo. Escreve newsletters completas com subject line otimizado para abertura." },
-    EN:{ title:"NEWSLETTER GW", sub:"In your voice", desc:"AI ghostwriter trained on your style. Writes full newsletters with open-rate optimized subject lines." },
-    tags:["Claude API","Fine-tuned","PT/EN"] },
-  // DASHBOARDS LAST
-  { id:1, n:"07", cat:"DASHBOARD", hasDemo:true, complete:true, icon:<LayoutDashboard size={13}/>,
-    PT:{ title:"CREATOR METRICS", sub:"YouTube · Instagram · TikTok", desc:"Painel unificado de métricas para criadores. Views, inscritos, alcance e metas mensais. Entrega em 24h." },
-    EN:{ title:"CREATOR METRICS", sub:"YouTube · Instagram · TikTok", desc:"Unified metrics panel for creators. Views, subscribers, reach and monthly goals. 24h delivery." },
-    tags:["React","Recharts","PT/EN"] },
-  { id:2, n:"08", cat:"DASHBOARD", hasDemo:true, complete:true, icon:<LayoutDashboard size={13}/>,
-    PT:{ title:"LAUNCH PANEL", sub:"Infoprodutos · Cursos · Mentorias", desc:"Funil de lançamento em tempo real. Leads, vendas diárias, conversão e faturamento acumulado." },
-    EN:{ title:"LAUNCH PANEL", sub:"Info Products · Courses · Coaching", desc:"Real-time launch funnel. Leads, daily sales, conversion and cumulative revenue." },
-    tags:["React","Real-time","Funnel"] },
-  { id:3, n:"09", cat:"DASHBOARD", hasDemo:true, complete:true, icon:<LayoutDashboard size={13}/>,
-    PT:{ title:"TRAFFIC COMMAND", sub:"Meta Ads · Google Ads", desc:"ROAS diário, CPA e performance por adset. Identifica o que escalar e o que pausar num relance." },
-    EN:{ title:"TRAFFIC COMMAND", sub:"Meta Ads · Google Ads", desc:"Daily ROAS, CPA and adset performance. Scale winners, cut losers — visible at a glance." },
-    tags:["React","Meta+Google","ROAS"] },
+  { id:1, n:"04", cat:"AI AGENT", hasDemo:false, complete:true, icon:<Bot size={13}/>,
+    PT:{ title:"PHANTOM", sub:"Gerador de Roteiros · Shorts & Reels", desc:"Tema + nicho → hook, desenvolvimento e CTA prontos para gravar. Otimizado para YouTube Shorts e Instagram Reels." },
+    EN:{ title:"PHANTOM", sub:"Script Generator · Shorts & Reels", desc:"Topic + niche → hook, body and CTA, ready to record. Optimized for YouTube Shorts and Instagram Reels." },
+    tags:["Claude API","Shorts","Reels","PT/EN"] },
+  { id:2, n:"05", cat:"AI AGENT", hasDemo:false, complete:true, icon:<Bot size={13}/>,
+    PT:{ title:"AD COPY AGENT", sub:"Meta · Google · VSL · A/B Test", desc:"Produto + avatar → 5-10 variações de copy com headline, corpo e CTA. Pronto para testar no mesmo output." },
+    EN:{ title:"AD COPY AGENT", sub:"Meta · Google · VSL · A/B Test", desc:"Product + avatar → 5-10 copy variations with headline, body and CTA. Ready to test in one output." },
+    tags:["Claude API","Meta Ads","Google Ads","A/B"] },
+  { id:3, n:"06", cat:"AI AGENT", hasDemo:false, complete:true, icon:<Bot size={13}/>,
+    PT:{ title:"NEWSLETTER GW", sub:"Ghostwriter · Beehiiv API", desc:"Link ou tópico → newsletter completa com abertura, corpo e CTA no seu tom de voz. Publica direto via Beehiiv." },
+    EN:{ title:"NEWSLETTER GW", sub:"Ghostwriter · Beehiiv API", desc:"Link or topic → full newsletter with opening, body and CTA in your voice. Publishes directly via Beehiiv." },
+    tags:["Claude API","Beehiiv","PT/EN"] },
+  { id:4, n:"07", cat:"AI AGENT", hasDemo:false, complete:true, icon:<Bot size={13}/>,
+    PT:{ title:"CONSULTOR DE NICHO", sub:"Criadores · Relatório PDF", desc:"Analisa seu perfil e entrega: nicho ideal, posicionamento, nome do canal, bio e primeiros 10 vídeos em PDF." },
+    EN:{ title:"NICHE CONSULTANT", sub:"Creators · PDF Report", desc:"Analyzes your profile and delivers: ideal niche, positioning, channel name, bio and first 10 videos as PDF." },
+    tags:["Claude API","PDF","Criadores"] },
+  { id:5, n:"08", cat:"AI AGENT", hasDemo:false, complete:true, icon:<Bot size={13}/>,
+    PT:{ title:"REPURPOSING AGENT", sub:"1 vídeo → 10 formatos", desc:"Transcrição → thread X, post LinkedIn, newsletter, email, 3 Shorts, carrossel e blog post. Tudo de uma vez." },
+    EN:{ title:"REPURPOSING AGENT", sub:"1 video → 10 formats", desc:"Transcript → X thread, LinkedIn post, newsletter, email, 3 Shorts, carousel and blog post. All at once." },
+    tags:["Claude API","Automação","Multi-format"] },
+  { id:6, n:"09", cat:"AI AGENT", hasDemo:false, complete:true, icon:<Bot size={13}/>,
+    PT:{ title:"AGENTE DE ATENDIMENTO", sub:"FAQ · Lead Capture · Embed", desc:"Chatbot treinado com base de conhecimento da empresa. Responde, captura leads e escala para humano via snippet." },
+    EN:{ title:"SUPPORT AGENT", sub:"FAQ · Lead Capture · Embed", desc:"Chatbot trained on your company knowledge base. Answers, captures leads and escalates to human via snippet." },
+    tags:["Claude API","Embed","B2B"] },
+  { id:10, n:"10", cat:"AI AGENT", hasDemo:false, complete:true, icon:<Bot size={13}/>,
+    PT:{ title:"SEO AGENT · YOUTUBE", sub:"Título · Tags · Capítulos", desc:"Assunto do vídeo → título, descrição, tags, capítulos e primeiro comentário pinado otimizados para rankeamento." },
+    EN:{ title:"SEO AGENT · YOUTUBE", sub:"Title · Tags · Chapters", desc:"Video topic → title, description, tags, chapters and first pinned comment, all optimized for ranking." },
+    tags:["Claude API","SEO","YouTube"] },
+  { id:11, n:"11", cat:"AI AGENT", hasDemo:false, complete:true, icon:<Bot size={13}/>,
+    PT:{ title:"AGENTE DE DM · INSTAGRAM", sub:"Resposta automática · Qualificação", desc:"Responde DMs do Instagram automaticamente, qualifica o lead e agenda chamada ou envia link de compra." },
+    EN:{ title:"DM AGENT · INSTAGRAM", sub:"Auto-reply · Lead Qualification", desc:"Automatically replies to Instagram DMs, qualifies the lead and books a call or sends purchase link." },
+    tags:["Claude API","Instagram","DM","B2B"] },
+  { id:12, n:"12", cat:"AI AGENT", hasDemo:false, complete:true, icon:<Bot size={13}/>,
+    PT:{ title:"AGENTE DE DM · WHATSAPP", sub:"Onboarding · Follow-up · CRM", desc:"Automatiza atendimento no WhatsApp: onboarding, follow-up, FAQ e integração com CRM. Recorrente mensal." },
+    EN:{ title:"DM AGENT · WHATSAPP", sub:"Onboarding · Follow-up · CRM", desc:"Automates WhatsApp service: onboarding, follow-up, FAQ and CRM integration. Monthly recurring." },
+    tags:["Claude API","WhatsApp","CRM","Recorrente"] },
 ];
 
-const CAT_MAP = { automation:"AUTOMATION", agent:"AI AGENT", dashboard:"DASHBOARD" };
-const MARQUEE_ITEMS = ["AUTOMATIONS","AI AGENTS","DASHBOARDS","24H DELIVERY","REACT","CLAUDE API","N8N","MAKE.COM","PYTHON","PT / EN"];
+const CAT_MAP = { automation:"AUTOMATION", agent:"AI AGENT" };
+const MARQUEE_ITEMS = ["AUTOMATIONS","AI AGENTS","24H DELIVERY","CLAUDE API","N8N","MAKE.COM","PYTHON","WHATSAPP","INSTAGRAM","META ADS","PT / EN","B2B"];
 
 /* ── ROW ────────────────────────────────────────────────────────────────────── */
 function Row({ p, lang, onDemo }) {
@@ -121,16 +131,16 @@ function Row({ p, lang, onDemo }) {
     <div
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
-      style={{ display:"grid", gridTemplateColumns:"56px 1fr 130px", gap:"0 20px", padding:"22px 0", borderBottom:"1px solid #0d0d0d", background:hov?"#070707":"transparent", transition:"background 0.2s" }}
+      style={{ display:"grid", gridTemplateColumns:"56px 1fr 130px", gap:"0 20px", padding:"22px 0", borderBottom:"1px solid #222", background:hov?"#070707":"transparent", transition:"background 0.2s" }}
     >
       {/* Number */}
-      <div style={{ fontFamily:"'Press Start 2P',monospace", fontSize:8, color:"#1a1a1a", paddingTop:4, lineHeight:1.6 }}>{p.n}</div>
+      <div style={{ fontFamily:"'Press Start 2P',monospace", fontSize:8, color:hov?"#fff":"#666", paddingTop:4, lineHeight:1.6, transition:"color 0.2s" }}>{p.n}</div>
 
       {/* Content */}
       <div>
         <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:9, flexWrap:"wrap" }}>
           <span style={{ fontSize:7, fontFamily:"'JetBrains Mono',monospace", color:catColor, letterSpacing:3, border:`1px solid ${hov?catColor:"#151515"}`, padding:"2px 8px", transition:"border-color 0.2s" }}>{p.cat}</span>
-          {!p.complete && <span style={{ fontSize:7, fontFamily:"'JetBrains Mono',monospace", color:"#1c1c1c", letterSpacing:2 }}>// {lang==="PT"?"EM BREVE":"COMING SOON"}</span>}
+          {!p.complete && <span style={{ fontSize:7, fontFamily:"'JetBrains Mono',monospace", color:"#666", letterSpacing:2 }}>// {lang==="PT"?"EM BREVE":"COMING SOON"}</span>}
         </div>
 
         {/* Title in pixel font */}
@@ -138,10 +148,10 @@ function Row({ p, lang, onDemo }) {
           {d.title}
         </div>
 
-        <div style={{ fontSize:8, fontFamily:"'JetBrains Mono',monospace", color:"#222", letterSpacing:2, marginBottom:10 }}>{d.sub}</div>
-        <div style={{ fontSize:11.5, color:"#2e2e2e", lineHeight:1.8, maxWidth:500, fontWeight:300, letterSpacing:0.2 }}>{d.desc}</div>
+        <div style={{ fontSize:8, fontFamily:"'JetBrains Mono',monospace", color:hov?"#bbb":"#777", letterSpacing:2, marginBottom:10, transition:"color 0.2s" }}>{d.sub}</div>
+        <div style={{ fontSize:11.5, color:hov?"#ccc":"#999", lineHeight:1.8, maxWidth:500, fontWeight:300, letterSpacing:0.2, transition:"color 0.2s" }}>{d.desc}</div>
         <div style={{ display:"flex", gap:5, marginTop:12, flexWrap:"wrap" }}>
-          {p.tags.map(t => <span key={t} style={{ fontSize:7, fontFamily:"'JetBrains Mono',monospace", color:"#1e1e1e", border:"1px solid #131313", padding:"2px 7px", letterSpacing:1 }}>{t}</span>)}
+          {p.tags.map(t => <span key={t} style={{ fontSize:7, fontFamily:"'JetBrains Mono',monospace", color:hov?"#aaa":"#777", border:`1px solid ${hov?"#444":"#333"}`, padding:"2px 7px", letterSpacing:1, transition:"all 0.2s" }}>{t}</span>)}
         </div>
       </div>
 
@@ -153,13 +163,13 @@ function Row({ p, lang, onDemo }) {
           </button>
         ) : (
           <a href="https://wa.me/5521967533689" target="_blank" rel="noreferrer"
-            style={{ padding:"8px 14px", border:"1px solid #141414", color:"#1e1e1e", fontSize:7, textDecoration:"none", fontFamily:"'JetBrains Mono',monospace", letterSpacing:2, display:"flex", alignItems:"center", gap:6, transition:"all 0.2s",
+            style={{ padding:"8px 14px", border:"1px solid #141414", color:"#777", fontSize:7, textDecoration:"none", fontFamily:"'JetBrains Mono',monospace", letterSpacing:2, display:"flex", alignItems:"center", gap:6, transition:"all 0.2s",
               ...(hov?{borderColor:"#fff",color:"#fff"}:{}) }}>
             {lang==="PT"?"CONTRATAR":"HIRE"} <ArrowUpRight size={9}/>
           </a>
         )}
         {p.github && (
-          <a href={p.github} target="_blank" rel="noreferrer" style={{ padding:"8px 14px", border:"1px solid #0f0f0f", color:"#1a1a1a", fontSize:7, textDecoration:"none", fontFamily:"'JetBrains Mono',monospace", letterSpacing:2, display:"flex", alignItems:"center", gap:6 }}>
+          <a href={p.github} target="_blank" rel="noreferrer" style={{ padding:"8px 14px", border:"1px solid #2a2a2a", color:"#666", fontSize:7, textDecoration:"none", fontFamily:"'JetBrains Mono',monospace", letterSpacing:2, display:"flex", alignItems:"center", gap:6 }}>
             <Github size={8}/>SRC
           </a>
         )}
@@ -210,26 +220,26 @@ export default function Portfolio() {
       <div style={{ position:"fixed", top:0, left:0, right:0, height:2, background:"linear-gradient(90deg,transparent,rgba(255,255,255,0.03),transparent)", animation:"scandown 8s linear infinite", zIndex:1, pointerEvents:"none" }} />
 
       {/* ── NAV ── */}
-      <nav style={{ position:"fixed",top:0,left:0,right:0,zIndex:100,padding:"0 40px",height:50,display:"flex",justifyContent:"space-between",alignItems:"center",background:"rgba(0,0,0,0.97)",backdropFilter:"blur(20px)",borderBottom:"1px solid #0d0d0d" }}>
+      <nav style={{ position:"fixed",top:0,left:0,right:0,zIndex:100,padding:"0 40px",height:50,display:"flex",justifyContent:"space-between",alignItems:"center",background:"rgba(0,0,0,0.97)",backdropFilter:"blur(20px)",borderBottom:"1px solid #222" }}>
         {/* Wordmark pixel */}
         <div style={{ display:"flex", alignItems:"center", gap:14 }}>
           <span style={{ fontFamily:"'Press Start 2P',monospace", fontSize:11, color:"#fff", letterSpacing:1, lineHeight:1 }}>SHALA</span>
-          <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:8, color:"#1a1a1a", letterSpacing:2 }}>.DEV</span>
+          <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:8, color:"#666", letterSpacing:2 }}>.DEV</span>
         </div>
 
         {/* Live clock */}
-        <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:"#151515", letterSpacing:3, fontVariantNumeric:"tabular-nums" }}>
-          {timeStr}<span style={{ animation:"blink 1s step-end infinite", marginLeft:3, color:"#1e1e1e" }}>_</span>
+        <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, color:"#555", letterSpacing:3, fontVariantNumeric:"tabular-nums" }}>
+          {timeStr}<span style={{ animation:"blink 1s step-end infinite", marginLeft:3, color:"#777" }}>_</span>
         </div>
 
         {/* Controls */}
         <div style={{ display:"flex", gap:8, alignItems:"center" }}>
-          <div style={{ display:"flex", border:"1px solid #0f0f0f" }}>
+          <div style={{ display:"flex", border:"1px solid #2a2a2a" }}>
             {["PT","EN"].map(l => (
               <button key={l} onClick={() => setLang(l)} style={{ padding:"5px 12px", fontSize:8, background:lang===l?"#fff":"transparent", color:lang===l?"#000":"#1e1e1e", border:"none", cursor:"pointer", fontFamily:"'JetBrains Mono',monospace", letterSpacing:2, transition:"all 0.15s" }}>{l}</button>
             ))}
           </div>
-          <a href="https://github.com/shalasch" target="_blank" rel="noreferrer" style={{ width:32,height:32,border:"1px solid #0f0f0f",display:"flex",alignItems:"center",justifyContent:"center",color:"#1a1a1a",textDecoration:"none" }}>
+          <a href="https://github.com/shalasch" target="_blank" rel="noreferrer" style={{ width:32,height:32,border:"1px solid #2a2a2a",display:"flex",alignItems:"center",justifyContent:"center",color:"#666",textDecoration:"none" }}>
             <Github size={11}/>
           </a>
           <a href="https://wa.me/5521967533689" target="_blank" rel="noreferrer" style={{ padding:"6px 16px",background:"#fff",color:"#000",fontSize:7,fontWeight:700,textDecoration:"none",letterSpacing:2,fontFamily:"'Press Start 2P',monospace",lineHeight:1.6 }}>
@@ -255,7 +265,7 @@ export default function Portfolio() {
           <div style={{ opacity:loaded?1:0,animation:loaded?"fadeUp 0.5s ease 0.1s both":"none" }}>
             <div style={{ display:"flex",alignItems:"center",gap:10,marginBottom:44 }}>
               <div style={{ width:6,height:6,borderRadius:0,background:"#fff",boxShadow:"0 0 0 2px #000, 0 0 0 3px #fff" }} />
-              <span style={{ fontSize:7,color:"#1e1e1e",letterSpacing:3,fontFamily:"'JetBrains Mono',monospace" }}>
+              <span style={{ fontSize:7,color:"#777",letterSpacing:3,fontFamily:"'JetBrains Mono',monospace" }}>
                 {lang==="PT"?"STATUS: DISPONÍVEL PARA PROJETOS":"STATUS: AVAILABLE FOR PROJECTS"}
               </span>
             </div>
@@ -265,9 +275,9 @@ export default function Portfolio() {
           <div style={{ opacity:loaded?1:0,animation:loaded?"fadeUp 0.6s ease 0.2s both":"none" }}>
             <div style={{ fontFamily:"'Press Start 2P',monospace", lineHeight:1.6, marginBottom:0 }}>
               <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#fff", marginBottom:8 }}>AI</div>
-              <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#1a1a1a", marginBottom:8 }}>AGENTS</div>
+              <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#666", marginBottom:8 }}>AGENTS</div>
               <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#fff", marginBottom:8 }}>&amp; AUTO</div>
-              <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#131313" }}>
+              <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#555" }}>
                 MATIONS
                 <span style={{ animation:"blink 1s step-end infinite", color:"#fff" }}>█</span>
               </div>
@@ -276,27 +286,27 @@ export default function Portfolio() {
 
           {/* Sub + CTA */}
           <div style={{ opacity:loaded?1:0,animation:loaded?"fadeUp 0.6s ease 0.4s both":"none",marginTop:48,display:"grid",gridTemplateColumns:"1fr 1fr",gap:40,maxWidth:840 }}>
-            <p style={{ margin:0,fontSize:12,color:"#2a2a2a",lineHeight:1.9,fontWeight:300,letterSpacing:0.3 }}>
+            <p style={{ margin:0,fontSize:12,color:"#888",lineHeight:1.9,fontWeight:300,letterSpacing:0.3 }}>
               {lang==="PT"
                 ? "Agentes IA e automações para criadores, infoprodutores e negócios. Do briefing ao deploy em até 24 horas."
-                : "Visual and intelligent solutions for creators, course sellers and traffic managers. Guaranteed 24-hour delivery."}
+                : "AI agents and automations for creators, course sellers and businesses. From brief to deploy in 24 hours."}
             </p>
             <div style={{ display:"flex",flexDirection:"column",gap:8 }}>
               <a href="https://wa.me/5521967533689" target="_blank" rel="noreferrer" style={{ padding:"14px 20px",background:"#fff",color:"#000",fontSize:7,fontWeight:700,textDecoration:"none",display:"flex",justifyContent:"space-between",alignItems:"center",letterSpacing:2,fontFamily:"'Press Start 2P',monospace",lineHeight:1.6 }}>
                 WHATSAPP <ArrowUpRight size={13}/>
               </a>
-              <a href="https://linkedin.com/in/shala-n-92bb56339" target="_blank" rel="noreferrer" style={{ padding:"14px 20px",border:"1px solid #111",color:"#1e1e1e",fontSize:7,textDecoration:"none",display:"flex",justifyContent:"space-between",alignItems:"center",letterSpacing:2,fontFamily:"'JetBrains Mono',monospace" }}>
+              <a href="https://linkedin.com/in/shala-n-92bb56339" target="_blank" rel="noreferrer" style={{ padding:"14px 20px",border:"1px solid #333",color:"#777",fontSize:7,textDecoration:"none",display:"flex",justifyContent:"space-between",alignItems:"center",letterSpacing:2,fontFamily:"'JetBrains Mono',monospace" }}>
                 LINKEDIN <ArrowUpRight size={13}/>
               </a>
             </div>
           </div>
 
           {/* Stats — pixel font */}
-          <div style={{ opacity:loaded?1:0,animation:loaded?"fadeUp 0.6s ease 0.6s both":"none",marginTop:60,display:"flex",borderTop:"1px solid #0c0c0c",paddingTop:24,gap:0,flexWrap:"wrap" }}>
+          <div style={{ opacity:loaded?1:0,animation:loaded?"fadeUp 0.6s ease 0.6s both":"none",marginTop:60,display:"flex",borderTop:"1px solid #1a1a1a",paddingTop:24,gap:0,flexWrap:"wrap" }}>
             {[["12+",lang==="PT"?"AGENTES":"AGENTS"],["24H",lang==="PT"?"ENTREGA":"DELIVERY"],["3","STACKS"],["100%","CUSTOM"]].map(([v,l],i) => (
               <div key={l} style={{ paddingRight:32,marginRight:32,borderRight:i<3?"1px solid #0c0c0c":"none",marginBottom:8 }}>
                 <div style={{ fontFamily:"'Press Start 2P',monospace",fontSize:"clamp(14px,2.5vw,28px)",color:"#fff",lineHeight:1.4,letterSpacing:-1 }}>{v}</div>
-                <div style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#1c1c1c",letterSpacing:3,marginTop:6 }}>{l}</div>
+                <div style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#666",letterSpacing:3,marginTop:6 }}>{l}</div>
               </div>
             ))}
           </div>
@@ -311,7 +321,7 @@ export default function Portfolio() {
         <Reveal>
           <div style={{ display:"flex",justifyContent:"space-between",alignItems:"flex-end",marginBottom:36,flexWrap:"wrap",gap:16 }}>
             <div>
-              <div style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#1a1a1a",letterSpacing:3,marginBottom:12 }}>// {lang==="PT"?"PROJETOS":"PROJECTS"}</div>
+              <div style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#666",letterSpacing:3,marginBottom:12 }}>// {lang==="PT"?"PROJETOS":"PROJECTS"}</div>
               <div style={{ fontFamily:"'Press Start 2P',monospace",fontSize:"clamp(13px,2.5vw,24px)",color:"#fff",lineHeight:1.6,letterSpacing:0 }}>
                 {lang==="PT"?"O QUE\nCONSTRUO":"WHAT I\nBUILD"}
               </div>
@@ -326,9 +336,9 @@ export default function Portfolio() {
         </Reveal>
 
         {/* Column headers */}
-        <div style={{ display:"grid",gridTemplateColumns:"56px 1fr 130px",gap:"0 20px",paddingBottom:10,borderBottom:"1px solid #0a0a0a" }}>
+        <div style={{ display:"grid",gridTemplateColumns:"56px 1fr 130px",gap:"0 20px",paddingBottom:10,borderBottom:"1px solid #1a1a1a" }}>
           {["NO.","PROJETO / PROJECT","—"].map(h => (
-            <span key={h} style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#141414",letterSpacing:3 }}>{h}</span>
+            <span key={h} style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#555",letterSpacing:3 }}>{h}</span>
           ))}
         </div>
 
@@ -344,14 +354,14 @@ export default function Portfolio() {
         <Reveal>
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:72,alignItems:"start" }}>
             <div>
-              <div style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#1a1a1a",letterSpacing:3,marginBottom:20 }}>// CONTACT</div>
+              <div style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#666",letterSpacing:3,marginBottom:20 }}>// CONTACT</div>
               <div style={{ fontFamily:"'Press Start 2P',monospace",fontSize:"clamp(14px,3vw,30px)",color:"#fff",lineHeight:1.8,marginBottom:20 }}>
                 {lang==="PT"?"VAMOS\nTRABALHAR\nJUNTOS?":"LET'S\nBUILD\nTOGETHER."}
               </div>
-              <p style={{ fontSize:12,color:"#2a2a2a",lineHeight:1.8,fontWeight:300,maxWidth:300,letterSpacing:0.3 }}>
+              <p style={{ fontSize:12,color:"#888",lineHeight:1.8,fontWeight:300,maxWidth:300,letterSpacing:0.3 }}>
                 {lang==="PT"
-                  ? "Dashboard, agente IA ou automação. Me conta o que você precisa e entrego em até 24h."
-                  : "Dashboard, AI agent or automation. Tell me what you need and I'll deliver in 24h."}
+                  ? "Agente IA, automação ou sistema personalizado. Me conta o que você precisa e entrego em até 24h."
+                  : "AI agent, automation or custom system. Tell me what you need and I'll deliver in 24h."}
               </p>
             </div>
             <div style={{ display:"flex",flexDirection:"column",gap:2,paddingTop:52 }}>
@@ -376,7 +386,7 @@ export default function Portfolio() {
       {/* ── FOOTER ── */}
       <footer style={{ padding:"14px 40px",borderTop:"1px solid #080808",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8 }}>
         <span style={{ fontFamily:"'Press Start 2P',monospace",fontSize:9,color:"#0f0f0f",letterSpacing:0 }}>SHALA.DEV</span>
-        <span style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#111",letterSpacing:3 }}>© 2026 · AI AGENTS · AUTOMATIONS · CLAUDE · OPENAI</span>
+        <span style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#444",letterSpacing:3 }}>© 2026 · AI AGENTS · AUTOMATIONS · CLAUDE API</span>
       </footer>
     </div>
   );
