@@ -186,8 +186,8 @@ export default function Portfolio() {
   const timeStr = now.toLocaleTimeString("pt-BR", { hour:"2-digit", minute:"2-digit", second:"2-digit" });
 
   const cats = lang==="PT"
-    ? { all:"TODOS", automation:"AUTOMAÇÕES", agent:"AGENTES IA", dashboard:"DASHBOARDS" }
-    : { all:"ALL", automation:"AUTOMATIONS", agent:"AI AGENTS", dashboard:"DASHBOARDS" };
+    ? { all:"TODOS", automation:"AUTOMAÇÕES", agent:"AGENTES IA" }
+    : { all:"ALL", automation:"AUTOMATIONS", agent:"AI AGENTS" };
 
   const filtered = cat==="all" ? PROJECTS : PROJECTS.filter(p => p.cat === CAT_MAP[cat]);
 
@@ -264,11 +264,11 @@ export default function Portfolio() {
           {/* ── PIXEL HEADLINE ── */}
           <div style={{ opacity:loaded?1:0,animation:loaded?"fadeUp 0.6s ease 0.2s both":"none" }}>
             <div style={{ fontFamily:"'Press Start 2P',monospace", lineHeight:1.6, marginBottom:0 }}>
-              <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#fff", marginBottom:8 }}>DASH</div>
-              <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#1a1a1a", marginBottom:8 }}>BOARDS</div>
-              <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#fff", marginBottom:8 }}>&amp; AI</div>
+              <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#fff", marginBottom:8 }}>AI</div>
+              <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#1a1a1a", marginBottom:8 }}>AGENTS</div>
+              <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#fff", marginBottom:8 }}>&amp; AUTO</div>
               <div style={{ fontSize:"clamp(20px,5.5vw,68px)", color:"#131313" }}>
-                AGENTS
+                MATIONS
                 <span style={{ animation:"blink 1s step-end infinite", color:"#fff" }}>█</span>
               </div>
             </div>
@@ -278,7 +278,7 @@ export default function Portfolio() {
           <div style={{ opacity:loaded?1:0,animation:loaded?"fadeUp 0.6s ease 0.4s both":"none",marginTop:48,display:"grid",gridTemplateColumns:"1fr 1fr",gap:40,maxWidth:840 }}>
             <p style={{ margin:0,fontSize:12,color:"#2a2a2a",lineHeight:1.9,fontWeight:300,letterSpacing:0.3 }}>
               {lang==="PT"
-                ? "Soluções visuais e inteligentes para criadores, infoprodutores e gestores de tráfego. Entrega garantida em 24 horas."
+                ? "Agentes IA e automações para criadores, infoprodutores e negócios. Do briefing ao deploy em até 24 horas."
                 : "Visual and intelligent solutions for creators, course sellers and traffic managers. Guaranteed 24-hour delivery."}
             </p>
             <div style={{ display:"flex",flexDirection:"column",gap:8 }}>
@@ -293,7 +293,7 @@ export default function Portfolio() {
 
           {/* Stats — pixel font */}
           <div style={{ opacity:loaded?1:0,animation:loaded?"fadeUp 0.6s ease 0.6s both":"none",marginTop:60,display:"flex",borderTop:"1px solid #0c0c0c",paddingTop:24,gap:0,flexWrap:"wrap" }}>
-            {[["11+",lang==="PT"?"PROJETOS":"PROJECTS"],["24H",lang==="PT"?"ENTREGA":"DELIVERY"],["3","STACKS"],["100%","CUSTOM"]].map(([v,l],i) => (
+            {[["12+",lang==="PT"?"AGENTES":"AGENTS"],["24H",lang==="PT"?"ENTREGA":"DELIVERY"],["3","STACKS"],["100%","CUSTOM"]].map(([v,l],i) => (
               <div key={l} style={{ paddingRight:32,marginRight:32,borderRight:i<3?"1px solid #0c0c0c":"none",marginBottom:8 }}>
                 <div style={{ fontFamily:"'Press Start 2P',monospace",fontSize:"clamp(14px,2.5vw,28px)",color:"#fff",lineHeight:1.4,letterSpacing:-1 }}>{v}</div>
                 <div style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#1c1c1c",letterSpacing:3,marginTop:6 }}>{l}</div>
@@ -376,7 +376,7 @@ export default function Portfolio() {
       {/* ── FOOTER ── */}
       <footer style={{ padding:"14px 40px",borderTop:"1px solid #080808",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8 }}>
         <span style={{ fontFamily:"'Press Start 2P',monospace",fontSize:9,color:"#0f0f0f",letterSpacing:0 }}>SHALA.DEV</span>
-        <span style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#111",letterSpacing:3 }}>© 2025 · AUTOMATIONS · AI AGENTS · DASHBOARDS</span>
+        <span style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#111",letterSpacing:3 }}>© 2026 · AI AGENTS · AUTOMATIONS · CLAUDE · OPENAI</span>
       </footer>
     </div>
   );
