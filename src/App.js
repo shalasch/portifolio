@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowUpRight, MessageCircle, Github, Play, Workflow, Bot, Code2, Database } from "lucide-react";
+import { ArrowUpRight, Github, Play, Workflow, Bot, Database } from "lucide-react";
 
 /* ── CURSOR ─────────────────────────────────────────────────────────────────── */
 function Cursor() {
@@ -140,7 +140,7 @@ function Row({ p, lang, onDemo }) {
       <div>
         <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:9, flexWrap:"wrap" }}>
           <span style={{ fontSize:7, fontFamily:"'JetBrains Mono',monospace", color:catColor, letterSpacing:3, border:`1px solid ${hov?catColor:"#151515"}`, padding:"2px 8px", transition:"border-color 0.2s" }}>{p.cat}</span>
-          {!p.complete && <span style={{ fontSize:7, fontFamily:"'JetBrains Mono',monospace", color:"#666", letterSpacing:2 }}>// {lang==="PT"?"EM BREVE":"COMING SOON"}</span>}
+          {!p.complete && <span style={{ fontSize:7, fontFamily:"'JetBrains Mono',monospace", color:"#666", letterSpacing:2 }}>{`// ${lang==="PT"?"EM BREVE":"COMING SOON"}`}</span>}
         </div>
 
         {/* Title in pixel font */}
@@ -183,8 +183,8 @@ export default function Portfolio() {
   const [lang, setLang] = useState("PT");
   const [cat, setCat] = useState("all");
   const [loaded, setLoaded] = useState(false);
-  const [demoId, setDemoId] = useState(null);
-  const [tick, setTick] = useState(0);
+  const [, setDemoId] = useState(null);
+  const [, setTick] = useState(0);
 
   useEffect(() => { setTimeout(() => setLoaded(true), 80); }, []);
   useEffect(() => {
@@ -321,7 +321,7 @@ export default function Portfolio() {
         <Reveal>
           <div style={{ display:"flex",justifyContent:"space-between",alignItems:"flex-end",marginBottom:36,flexWrap:"wrap",gap:16 }}>
             <div>
-              <div style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#666",letterSpacing:3,marginBottom:12 }}>// {lang==="PT"?"PROJETOS":"PROJECTS"}</div>
+              <div style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#666",letterSpacing:3,marginBottom:12 }}>{`// ${lang==="PT"?"PROJETOS":"PROJECTS"}`}</div>
               <div style={{ fontFamily:"'Press Start 2P',monospace",fontSize:"clamp(13px,2.5vw,24px)",color:"#fff",lineHeight:1.6,letterSpacing:0 }}>
                 {lang==="PT"?"O QUE\nCONSTRUO":"WHAT I\nBUILD"}
               </div>
@@ -354,7 +354,7 @@ export default function Portfolio() {
         <Reveal>
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:72,alignItems:"start" }}>
             <div>
-              <div style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#666",letterSpacing:3,marginBottom:20 }}>// CONTACT</div>
+              <div style={{ fontSize:7,fontFamily:"'JetBrains Mono',monospace",color:"#666",letterSpacing:3,marginBottom:20 }}>{`// CONTACT`}</div>
               <div style={{ fontFamily:"'Press Start 2P',monospace",fontSize:"clamp(14px,3vw,30px)",color:"#fff",lineHeight:1.8,marginBottom:20 }}>
                 {lang==="PT"?"VAMOS\nTRABALHAR\nJUNTOS?":"LET'S\nBUILD\nTOGETHER."}
               </div>
