@@ -295,9 +295,6 @@ export default function Portfolio() {
               <a href="https://wa.me/5521967533689" target="_blank" rel="noreferrer" style={{ padding:"14px 20px",background:"#fff",color:"#000",fontSize:7,fontWeight:700,textDecoration:"none",display:"flex",justifyContent:"space-between",alignItems:"center",letterSpacing:2,fontFamily:"'Press Start 2P',monospace",lineHeight:1.6 }}>
                 WHATSAPP <ArrowUpRight size={13}/>
               </a>
-              <a href="https://linkedin.com/in/shala-n-92bb56339" target="_blank" rel="noreferrer" style={{ padding:"14px 20px",border:"1px solid #333",color:"#777",fontSize:7,textDecoration:"none",display:"flex",justifyContent:"space-between",alignItems:"center",letterSpacing:2,fontFamily:"'JetBrains Mono',monospace" }}>
-                LINKEDIN <ArrowUpRight size={13}/>
-              </a>
             </div>
           </div>
 
@@ -367,7 +364,6 @@ export default function Portfolio() {
             <div style={{ display:"flex",flexDirection:"column",gap:2,paddingTop:52 }}>
               {[
                 { label:"WHATSAPP", href:"https://wa.me/5521967533689", primary:true },
-                { label:"LINKEDIN", href:"https://linkedin.com/in/shala-n-92bb56339" },
                 { label:"GITHUB", href:"https://github.com/shalasch" },
                 { label:"EMAIL", href:"mailto:shaladrive@gmail.com" },
               ].map(c => (
